@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+<body>
+    <div class="myform">
+    	<form>
+    		Weight: <input type="text" placeholder="Weight (kg)" class="wts" id="wt"><br><br>
+    		Height: <input type="text"  placeholder="Height (cm)" class="hts" id="ht"><br><br>
+    		<!-- <button class="calc" id="cal" onclick="calc()">Calculate</button> -->
+            <input type="button" name="" value="BMI" class="calc" onclick="calcBMI()">
+    	</form>
+        <div class="showData">
+            <p id="show"> </p>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    const calcBMI = () =>{
+        let wtt = document.getElementById('wt').value;
+        let htt = document.getElementById('ht').value;
+        let bmi = (parseFloat(wtt) / (parseFloat(htt) * parseFloat(htt)/100)*100).toFixed(1);
+        // alert("Your BMI :"+bmi);
+
+        let category= "";
+
+        if (bmi<16) {
+            category = "Severe Thinness"
+        }
+        else if (bmi<=17 && bmi>=16) {
+            category = "Mild Thinness"
+        }
+        else if (bmi<=25 && bmi>=18.5) {
+            category = "Normal"
+        }
+        else if (bmi<=26 && bmi>=30) {
+            category = "OverWeight"
+        }
+        else {
+            category = "Obese"
+        }
+
+        // alert(category);
+
+        document.getElementById('show').innerHTML=`<br>Your BMI is ${bmi} <br> Your belongs to ${category} category`;
+    }
+
+</script>
+
+</body>
+</html>
